@@ -12,7 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
 
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -30,12 +32,19 @@ namespace Playlistator
         public MainPage()
         {
             this.InitializeComponent();
-          //  this.connection = null;
+            //  this.connection = null;
+
+            DataAccess.InitializeDatabase();
+
+            Debug.WriteLine("Database initialized.", "INFO");
+            Debug.WriteLine("Something", "WARNING");
+
+            frameMainContent.Navigate(typeof(Page1));
         }
 
         private void buttonSQLiteTest1_Click(object sender, RoutedEventArgs e)
         {
-            
+            Debug.WriteLine($"AppFolder={ApplicationData.Current.LocalFolder.Path}", "INFO");
         }
 
         private void buttonSQLiteTest2_Click(object sender, RoutedEventArgs e)

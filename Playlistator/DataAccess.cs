@@ -11,12 +11,9 @@ using System.IO;
 
 namespace Playlistator
 {
-    // Tutorial SQLite in UWP https://docs.microsoft.com/en-us/windows/uwp/data-access/sqlite-databases
     public static class DataAccess
     {
-        private const string CreateTableSongs = "";
-        private const string CreateTableTags = "";
-        private const string CreateTableSongsTagsRel = "";
+        private const string DatabaseFilename = "Playlistator.db";
 
         public async static void InsertSong() { }
         public async static void UpdateSong() { }
@@ -28,21 +25,35 @@ namespace Playlistator
 
         public async static void InitializeDatabase()
         {
-            await ApplicationData.Current.LocalFolder.CreateFileAsync("sqliteSample.db", CreationCollisionOption.OpenIfExists);
-            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "sqliteSample.db");
-            using (SqliteConnection db =
-               new SqliteConnection($"Filename={dbpath}"))
+            await ApplicationData.Current.LocalFolder.CreateFileAsync(DatabaseFilename, CreationCollisionOption.OpenIfExists);
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, DatabaseFilename);
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
             {
                 db.Open();
 
-                String tableCommand = "CREATE TABLE IF NOT " +
-                    "EXISTS MyTable (Primary_Key INTEGER PRIMARY KEY, " +
-                    "Text_Entry NVARCHAR(2048) NULL)";
+                SqliteCommand createTableTags = new SqliteCommand(SqliteExpressions.CreateTableTags, db);
+                createTableTags.ExecuteReader();
 
-                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
+                SqliteCommand createTableSongs = new SqliteCommand(SqliteExpressions.CreateTableSongs, db);
+                createTableSongs.ExecuteReader();
 
-                createTable.ExecuteReader();
+                SqliteCommand createTableSongsHasTags = new SqliteCommand(SqliteExpressions.CreateTableSongsHasTags, db);
+                createTableSongsHasTags.ExecuteReader();
             }
         }
+
+        public async static void CheckTables()
+        {
+            string dbpath = Path.Combine(ApplicationData.Current.LocalFolder.Path, DatabaseFilename);
+            using (SqliteConnection db = new SqliteConnection($"Filename={dbpath}"))
+            {
+                db.Open();
+
+                SqliteCommand createTableTags = new SqliteCommand(SqliteExpressions.CreateTableTags, db);
+
+            }
+
+        }
+
     }
 }

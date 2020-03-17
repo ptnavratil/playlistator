@@ -7,13 +7,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <NavigationView Name="navigationViewMainNavigation" ExpandedModeThresholdWidth="100" IsPaneOpen="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="LeftCompact">
+        <NavigationView.MenuItems>
+            <NavigationViewItem  Icon="Home" Content="Home"></NavigationViewItem>
+            <NavigationViewItemHeader Content="Tags"></NavigationViewItemHeader>
+            <NavigationViewItem Name="navigationViewItemAddTag" Content="Add"></NavigationViewItem>
+            <NavigationViewItem Content="List"></NavigationViewItem>
+            <NavigationViewItemHeader Content="Songs"></NavigationViewItemHeader>
+            <NavigationViewItem Content="Add"></NavigationViewItem>
+            <NavigationViewItem Content="List"></NavigationViewItem>
+            <NavigationViewItemSeparator></NavigationViewItemSeparator>
+            <NavigationViewItem Content="About app"></NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Frame x:Name="frameMainContent"/>
+    </NavigationView>
 
-    <Grid>
-        <Button x:Name="buttonSQLiteTest1" Content="SQLite test 1" Margin="10,10,0,0" VerticalAlignment="Top" Click="buttonSQLiteTest1_Click"/>
-        <TextBox x:Name="textBox"  HorizontalAlignment="Left" Margin="10,47,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Height="100"/>
-        <Button x:Name="buttonSQLiteTest2" Content="SQLite test 2" Margin="114,10,0,0" VerticalAlignment="Top" Click="buttonSQLiteTest2_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,152,0,0" Text="Some Text - TEST" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Rectangle HorizontalAlignment="Left" Height="100" Margin="218,47,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Fill="#FFF59595"/>
-
-    </Grid>
 </Page>
