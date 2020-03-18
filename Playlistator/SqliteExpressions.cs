@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Playlistator
+﻿namespace Playlistator
 {
     class SqliteExpressions
     {
@@ -14,8 +8,14 @@ namespace Playlistator
         public const string CreateTableTags = "CREATE TABLE IF NOT EXISTS `tags` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL UNIQUE, `description` TEXT, `created` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP )";
         public const string CreateTableSongsHasTags = "CREATE TABLE IF NOT EXISTS `songs_has_tags` ( `song_id` INTEGER NOT NULL, `tag_id` INTEGER NOT NULL, `created` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`song_id`,`tag_id`) )";
 
+        public const string InsertTag = "INSERT INTO `tags` (name, description) VALUES ($name, $description)";
+
+        public const string SelectAllTags = "SELECT id, name, description, created FROM `tags`;";
+
+        /*
         public const string CheckTableSongs = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs'";
-        public const string CheckTableTags = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs'";
-        public const string CheckTableSongsHasTags = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs'";
+        public const string CheckTableTags = "SELECT name FROM sqlite_master WHERE type='table' AND name='tags'";
+        public const string CheckTableSongsHasTags = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs_has_tags'";
+        */
     }
 }

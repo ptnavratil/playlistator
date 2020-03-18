@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="Playlistator.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Playlistator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <NavigationView Name="navigationViewMainNavigation" ExpandedModeThresholdWidth="100" IsPaneOpen="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="LeftCompact" SelectionChanged="navigationViewMainNavigation_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem Name="navigationViewItemHome" Content="Home" Icon="Home" ></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemPlayer" Content="Player" Icon="Play" ></NavigationViewItem>
+            <NavigationViewItemHeader Content="Tags"></NavigationViewItemHeader>
+            <NavigationViewItem Name="navigationViewItemAddTag" Content="Add"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemListTags" Content="List"></NavigationViewItem>
+            <NavigationViewItemHeader Content="Songs"></NavigationViewItemHeader>
+            <NavigationViewItem Name="navigationViewItemAddSong" Content="Add"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemListSongs" Content="List"></NavigationViewItem>
+            <NavigationViewItemSeparator></NavigationViewItemSeparator>
+            <NavigationViewItem Name="navigationViewItemAboutApplication" Content="About app"></NavigationViewItem>
+        </NavigationView.MenuItems>
+        <Frame x:Name="frameMainContent"/>
+    </NavigationView>
+
+</Page>
