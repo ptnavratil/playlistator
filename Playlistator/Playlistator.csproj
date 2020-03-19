@@ -120,12 +120,22 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Model\Song.cs" />
+    <Compile Include="Pages\PageAddSong.xaml.cs">
+      <DependentUpon>PageAddSong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageSongDetail.xaml.cs">
+      <DependentUpon>PageSongDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TempListItemDesign.xaml.cs">
+      <DependentUpon>TempListItemDesign.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Tag.cs" />
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="Pages\TempPage1.xaml.cs">
+      <DependentUpon>TempPage1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageAddTag.xaml.cs">
       <DependentUpon>PageAddTag.xaml</DependentUpon>
@@ -138,6 +148,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqliteExpressions.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -159,11 +170,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\PageAddSong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageSongDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TempListItemDesign.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Page1.xaml">
+    <Page Include="Pages\TempPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

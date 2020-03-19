@@ -20,13 +20,11 @@ namespace Playlistator.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PageListTags : Page
+    public sealed partial class PageAddTagToSong : Page
     {
-        public PageListTags()
+        public PageAddTagToSong()
         {
             this.InitializeComponent();
-
-            listViewTags.ItemsSource = DataAccess.SelectAllTags();
         }
     }
 }

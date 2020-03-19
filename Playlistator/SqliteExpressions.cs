@@ -8,9 +8,12 @@
         public const string CreateTableTags = "CREATE TABLE IF NOT EXISTS `tags` ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL UNIQUE, `description` TEXT, `created` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP )";
         public const string CreateTableSongsHasTags = "CREATE TABLE IF NOT EXISTS `songs_has_tags` ( `song_id` INTEGER NOT NULL, `tag_id` INTEGER NOT NULL, `created` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`song_id`,`tag_id`) )";
 
-        public const string InsertTag = "INSERT INTO `tags` (name, description) VALUES ($name, $description)";
-
+        public const string InsertTag = "INSERT INTO `tags` (name, description, created) VALUES ($name, $description, strftime('%s','now'))";
         public const string SelectAllTags = "SELECT id, name, description, created FROM `tags`;";
+
+        public const string InsertSong = "INSERT INTO `songs` (song_name, author_name, filesystem_path, created) VALUES ($song_name, $author_name, $filesystem_path, strftime('%s','now'))";
+        public const string SelectAllSongs = "select id, song_name, author_name, filesystem_path, created FROM `songs`";
+
 
         /*
         public const string CheckTableSongs = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs'";

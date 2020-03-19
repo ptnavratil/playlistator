@@ -2,7 +2,7 @@
 
 namespace Playlistator.Model
 {
-    public class Tag
+    public class Song
     {
         #region Constants
         #endregion //Constants
@@ -12,21 +12,25 @@ namespace Playlistator.Model
         #endregion //Attributes
 
         #region Constructors
-        public Tag() { }
+        public Song()
+        {
+        }
 
-        public Tag(long id, string name, string description, long created)
+        public Song(long id, string songName, string authorName, string filesystemPath, long created)
         {
             Id = id;
-            Name = name;
-            Description = description;
+            SongName = songName;
+            AuthorName = authorName;
+            FilesystemPath = filesystemPath;
             Created = new DateTime(created);
         }
         #endregion //Constructors
 
         #region Properties
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string SongName { get; set; }
+        public string AuthorName { get; set; }
+        public string FilesystemPath { get; set; }
         public DateTime Created
         {
             get { return created; }

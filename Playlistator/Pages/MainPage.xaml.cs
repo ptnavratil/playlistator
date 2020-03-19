@@ -66,15 +66,18 @@ namespace Playlistator.Pages
             }
             else if (selectedItem.Equals(navigationViewItemAddTag))
             {
+                Debug.WriteLine("'PageAddTag' selected", "INFO");
                 frameMainContent.Navigate(typeof(PageAddTag));
             }
             else if (selectedItem.Equals(navigationViewItemListTags))
             {
-                Debug.WriteLine("Page LIST TAGS selected", "INFO");
+                Debug.WriteLine("'PageListTags' selected", "INFO");
+                frameMainContent.Navigate(typeof(PageListTags));
             }
             else if (selectedItem.Equals(navigationViewItemAddSong))
             {
-                Debug.WriteLine("Page ADD SONG selected", "INFO");
+                Debug.WriteLine("'PageAddSong' selected", "INFO");
+                frameMainContent.Navigate(typeof(PageAddSong));
             }
             else if (selectedItem.Equals(navigationViewItemListSongs))
             {

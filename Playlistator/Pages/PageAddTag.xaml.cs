@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Playlistator.Model;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Playlistator.Pages
@@ -35,7 +36,7 @@ namespace Playlistator.Pages
 
             if (!string.IsNullOrEmpty(tagName))
             {
-                bool tagInserted = DataAccess.InsertTag(tagName, tagDescription);
+                bool tagInserted = DataAccess.InsertTag(new Tag() { Name = tagName, Description = tagDescription });
                 if (tagInserted)
                 {
                     await new MessageDialog("Tag successfully added.", "Tag creation").ShowAsync();
