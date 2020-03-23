@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using System.Diagnostics;
+using Playlistator.Model;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Playlistator.Pages
@@ -20,16 +22,26 @@ namespace Playlistator.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PageListTags : Page
+    public sealed partial class PageListSongs : Page
     {
-        public PageListTags()
+        public PageListSongs()
         {
             this.InitializeComponent();
-
-            listViewTags.ItemsSource = DataAccess.SelectAllTags();
+            listViewSongs.ItemsSource = DataAccess.SelectAllSongs();
         }
 
-        //TODO vyresit aby byl ScrollBar u seznamu Tagu
+        private void buttonGoToSelectedSongDetail_Click(object sender, RoutedEventArgs e)
+        {
+            object selectedItem = listViewSongs.SelectedItem;
+            if (selectedItem != null && selectedItem is Song) {
+                Song selectedSong = selectedItem as Song;
+                Debug.WriteLine($"{selectedItem?.GetType().ToString()}", "DEBUG");
 
+                this.Frame.Navigate(typeof(PageSongDetail), selectedSong);
+
+
+            }
+        
+        }
     }
 }

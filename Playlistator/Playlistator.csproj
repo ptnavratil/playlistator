@@ -124,6 +124,9 @@
     <Compile Include="Pages\PageAddSong.xaml.cs">
       <DependentUpon>PageAddSong.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageListSongs.xaml.cs">
+      <DependentUpon>PageListSongs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageSongDetail.xaml.cs">
       <DependentUpon>PageSongDetail.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageListSongs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageSongDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,7 +218,9 @@
       <Version>6.2.9</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Dialogs\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Ruzne.md" />
     <None Include="tables.ddl" />

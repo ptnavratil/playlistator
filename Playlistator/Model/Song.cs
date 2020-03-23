@@ -41,9 +41,16 @@ namespace Playlistator.Model
             }
         }
         public string CreatedString { get; private set; }
+
+
         #endregion //Properties
 
         #region Public Methods
+        public override bool Equals(object obj)
+        {
+            return obj is Song song &&
+                   Id == song.Id;
+        }
         #endregion //Public Methods
 
         #region Private Methods

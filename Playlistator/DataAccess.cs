@@ -57,6 +57,34 @@ namespace Playlistator
             return listOfTags;
         }
 
+        public static IList<long> SelectAllIdsOfSelectedSongTags(Song selectedSong)
+        {
+            IList<long> listOfTagIds = new List<long>();
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectTagIdsOfSelectedSongCommand = new SqliteCommand(SqliteExpressions.SelectTagIdsOfSelectedSong, db);
+                selectTagIdsOfSelectedSongCommand.Parameters.AddWithValue("$song_id", selectedSong.Id);
+
+                try
+                {
+                    SqliteDataReader reader = selectTagIdsOfSelectedSongCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        long tagId = (long)reader["tag_id"];
+                        listOfTagIds.Add(tagId);
+                    }
+                    reader.Close();
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                }
+            }
+            return listOfTagIds;
+        }
+
         public static IList<Song> SelectAllSongs()
         {
             IList<Song> listOfSongs = new List<Song>();
@@ -72,8 +100,8 @@ namespace Playlistator
                     while (reader.Read())
                     {
                         long songId = (long)reader["id"];
-                        string songName = (string)reader["name"];
-                        string authorName = (string)reader["description"];
+                        string songName = (string)reader["song_name"];
+                        string authorName = (string)reader["author_name"];
                         string filesystemPath = (string)reader["filesystem_path"];
                         long songCreated = (long)reader["created"];
 
@@ -148,10 +176,59 @@ namespace Playlistator
             }
         }
 
-        public static bool AddTagToSong(Song song)
+        public static bool AddTagToSong(Song song, Tag tag)
         {
-            throw new NotImplementedException();
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand addTagToSongCommand = new SqliteCommand(SqliteExpressions.InsertSongHasTag, db);
+                addTagToSongCommand.Parameters.AddWithValue("$song_id", song.Id);
+                addTagToSongCommand.Parameters.AddWithValue("$tag_id", tag.Id);
+                try
+                {
+                    int numOfAffectedRows = addTagToSongCommand.ExecuteNonQuery();
+                    if (numOfAffectedRows == 1)
+                    {
+                        Debug.WriteLine("Tag added to song.", "OK");
+                        return true;
+                    }
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                    return false;
+                }
+                return false;
+            }
         }
+
+        public static bool RemoveTagFromSong(Song song, Tag tag) {
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand removeTagFromSongCommand = new SqliteCommand(SqliteExpressions.DeleteSongHasTag, db); 
+                removeTagFromSongCommand.Parameters.AddWithValue("$song_id", song.Id);
+                removeTagFromSongCommand.Parameters.AddWithValue("$tag_id", tag.Id);
+                try
+                {
+                    int numOfAffectedRows = removeTagFromSongCommand.ExecuteNonQuery();
+                    if (numOfAffectedRows == 1)
+                    {
+                        Debug.WriteLine("Tag removed from song.", "OK");
+                        return true;
+                    }
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                    return false;
+                }
+                return false;
+            }
+        }
+
 
 
 

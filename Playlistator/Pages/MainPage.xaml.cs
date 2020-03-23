@@ -81,7 +81,8 @@ namespace Playlistator.Pages
             }
             else if (selectedItem.Equals(navigationViewItemListSongs))
             {
-                Debug.WriteLine("Page LIST SONGS selected", "INFO");
+                Debug.WriteLine("'PageListSongs' selected", "INFO");
+                frameMainContent.Navigate(typeof(PageListSongs));
             }
         }
     }

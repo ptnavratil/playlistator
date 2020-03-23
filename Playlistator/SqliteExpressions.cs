@@ -14,6 +14,10 @@
         public const string InsertSong = "INSERT INTO `songs` (song_name, author_name, filesystem_path, created) VALUES ($song_name, $author_name, $filesystem_path, strftime('%s','now'))";
         public const string SelectAllSongs = "select id, song_name, author_name, filesystem_path, created FROM `songs`";
 
+        public const string InsertSongHasTag = "INSERT INTO `songs_has_tags` (song_id, tag_id, created) VALUES ($song_id, $tag_id, strftime('%s','now'))";
+        public const string DeleteSongHasTag = "DELETE FROM `songs_has_tags` WHERE `song_id`=$song_id AND `tag_id`=$tag_id";
+
+        public const string SelectTagIdsOfSelectedSong = "SELECT tag_id FROM songs_has_tags WHERE song_id = $song_id";
 
         /*
         public const string CheckTableSongs = "SELECT name FROM sqlite_master WHERE type='table' AND name='songs'";
