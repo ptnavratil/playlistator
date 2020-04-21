@@ -9,10 +9,10 @@
         public const string CreateTableSongsHasTags = "CREATE TABLE IF NOT EXISTS `songs_has_tags` ( `song_id` INTEGER NOT NULL, `tag_id` INTEGER NOT NULL, `created` INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`song_id`,`tag_id`) )";
 
         public const string InsertTag = "INSERT INTO `tags` (name, description, created) VALUES ($name, $description, strftime('%s','now'))";
-        public const string SelectAllTags = "SELECT id, name, description, created FROM `tags`;";
+        public const string SelectAllTags = "SELECT id, name, description, created FROM `tags` ORDER BY name ASC";
 
         public const string InsertSong = "INSERT INTO `songs` (song_name, author_name, filesystem_path, created) VALUES ($song_name, $author_name, $filesystem_path, strftime('%s','now'))";
-        public const string SelectAllSongs = "select id, song_name, author_name, filesystem_path, created FROM `songs`";
+        public const string SelectAllSongs = "select id, song_name, author_name, filesystem_path, created FROM `songs` ORDER BY song_name ASC";
 
         public const string InsertSongHasTag = "INSERT INTO `songs_has_tags` (song_id, tag_id, created) VALUES ($song_id, $tag_id, strftime('%s','now'))";
         public const string DeleteSongHasTag = "DELETE FROM `songs_has_tags` WHERE `song_id`=$song_id AND `tag_id`=$tag_id";

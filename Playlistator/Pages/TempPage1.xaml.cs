@@ -53,6 +53,7 @@ namespace Playlistator.Pages
                 textBoxSelectedSong.Text = selectedSongFile.Name;
                 var stream = await selectedSongFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 player.SetSource(stream, "");
+                // Nefunguje pisnicka se zacne prehravat i kdyz se zavola player.Stop();
                 player.Stop();
             }
             else

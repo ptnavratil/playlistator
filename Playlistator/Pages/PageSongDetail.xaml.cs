@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 using Playlistator.Model;
 using Windows.UI.Popups;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,14 +31,15 @@ namespace Playlistator.Pages
     {
 
         private Song actualSong;
-        private IList<Tag> listOfTagsToAdd;
-        private IList<Tag> listOfTagsToRemove;
+        private ObservableCollection<Tag> listOfTagsToAdd;
+        private ObservableCollection<Tag> listOfTagsToRemove;
 
         public PageSongDetail()
         {
             this.InitializeComponent();
-            listOfTagsToAdd = new List<Tag>();
-            listOfTagsToRemove = new List<Tag>();
+            listOfTagsToAdd = new ObservableCollection<Tag>();
+            listOfTagsToRemove = new ObservableCollection<Tag>();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,13 +51,9 @@ namespace Playlistator.Pages
                 textBlockSongName.Text = selectedSong.SongName;
                 textBlockAuthorName.Text = selectedSong.AuthorName;
                 textBlockFilesystemPath.Text = selectedSong.FilesystemPath;
-                //FIXME naplneni comboboxu
 
                 IList<long> listOfSongTagIds = DataAccess.SelectAllIdsOfSelectedSongTags(selectedSong);
                 IList<Tag> listOfAllTags = DataAccess.SelectAllTags();
-
-                //IList<Tag> listOfTagsToAdd = new List<Tag>();
-                //IList<Tag> listOfTagsToRemove = new List<Tag>();
 
                 foreach (Tag oneTag in listOfAllTags)
                 {
@@ -105,10 +103,6 @@ namespace Playlistator.Pages
                     listOfTagsToAdd.Remove(selectedTag);
                     comboBoxTagsToAdd.SelectedItem = null;
                     listOfTagsToRemove.Add(selectedTag);
-
-                    //comboBoxTagsToAdd.Items.Remove(selectedTag);
-                    //comboBoxTagsToRemove.Items.Add(selectedTag);
-                    Debug.WriteLine($"Tag[{selectedTag.Name}] added to song.", "DEBUG");
                 }
             }
         }
@@ -124,10 +118,6 @@ namespace Playlistator.Pages
                     listOfTagsToRemove.Remove(selectedTag);
                     comboBoxTagsToRemove.SelectedItem = null;
                     listOfTagsToAdd.Add(selectedTag);
-
-                    //comboBoxTagsToRemove.Items.Remove(selectedTag);
-                    //comboBoxTagsToAdd.Items.Add(selectedTag);
-                    Debug.WriteLine($"Tag[{selectedTag.Name}] removed from song.", "DEBUG");
                 }
             }
         }

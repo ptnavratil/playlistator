@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="pageListTags">
 
     <Page.Resources>
         <DataTemplate x:Key="TagsListViewTemplate" x:DataType="model:Tag">
@@ -43,10 +43,11 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Width="400"  Orientation="Vertical">
+    <StackPanel x:Name="stackPanelMain" Width="400" Height="{Binding Height, ElementName=pageListTags}"  Orientation="Vertical">
         <TextBlock FontSize="16" Text="List of defined tags" HorizontalAlignment="Center"></TextBlock>
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <ListView x:Name="listViewTags" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}"/>
+        <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Height="{Binding Height, ElementName=stackPanelMain}">
+            <ListView x:Name="listViewTags" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}" >
+            </ListView>
         </ScrollViewer>
     </StackPanel>
     
