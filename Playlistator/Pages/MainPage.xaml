@@ -6,8 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView Name="navigationViewMainNavigation" ExpandedModeThresholdWidth="100" IsPaneOpen="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="LeftCompact" SelectionChanged="navigationViewMainNavigation_SelectionChanged">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="Auto" Height="Auto">
+    <NavigationView Name="navigationViewMainNavigation" IsPaneOpen="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="LeftCompact" SelectionChanged="navigationViewMainNavigation_SelectionChanged">
         <NavigationView.MenuItems>
             <NavigationViewItem Name="navigationViewItemHome" Content="Home" Icon="Home" ></NavigationViewItem>
             <NavigationViewItem Name="navigationViewItemPlayer" Content="Player" Icon="Play" ></NavigationViewItem>

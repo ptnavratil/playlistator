@@ -20,14 +20,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Ellipse x:Name="Ellipse"
-                    Grid.RowSpan="2"
-                    Width ="32"
-                    Height="32"
-                    Margin="6"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                 <TextBlock Grid.Column="1"
                     Text="{x:Bind Name}"
                     x:Phase="1"
@@ -43,12 +35,20 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel x:Name="stackPanelMain" Width="400" Height="{Binding Height, ElementName=pageListTags}"  Orientation="Vertical">
-        <TextBlock FontSize="16" Text="List of defined tags" HorizontalAlignment="Center"></TextBlock>
-        <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Visible" Height="{Binding Height, ElementName=stackPanelMain}">
-            <ListView x:Name="listViewTags" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}" >
-            </ListView>
-        </ScrollViewer>
-    </StackPanel>
+    <Grid Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="textBlockListOfTagsHeader" FontSize="16" Text="List of defined tags" HorizontalAlignment="Center" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <ListView Grid.Row="1" x:Name="listViewTags" Width="400" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}"  RelativePanel.Below="textBlockListOfTagsHeader" RelativePanel.AlignBottomWithPanel="True" />
+
+
+    </Grid>
+    
+ 
+
+
     
 </Page>

@@ -26,18 +26,12 @@ namespace Playlistator.Pages
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        //private SqliteConnection connection;
 
         public MainPage()
         {
             this.InitializeComponent();
-            //  this.connection = null;
-
             DataAccess.InitializeDatabase();
-
-            Debug.WriteLine("Database initialized.", "INFO");
-            Debug.WriteLine("Something", "WARNING");
-
+            Debug.WriteLine("Database initialized.", "DEBUG");
             frameMainContent.Navigate(typeof(PageHome));
         }
 
@@ -62,26 +56,21 @@ namespace Playlistator.Pages
             }
             else if (selectedItem.Equals(navigationViewItemPlayer))
             {
-                Debug.WriteLine("Page PLAYER selected", "INFO");
             }
             else if (selectedItem.Equals(navigationViewItemAddTag))
             {
-                Debug.WriteLine("'PageAddTag' selected", "INFO");
                 frameMainContent.Navigate(typeof(PageAddTag));
             }
             else if (selectedItem.Equals(navigationViewItemListTags))
             {
-                Debug.WriteLine("'PageListTags' selected", "INFO");
                 frameMainContent.Navigate(typeof(PageListTags));
             }
             else if (selectedItem.Equals(navigationViewItemAddSong))
             {
-                Debug.WriteLine("'PageAddSong' selected", "INFO");
                 frameMainContent.Navigate(typeof(PageAddSong));
             }
             else if (selectedItem.Equals(navigationViewItemListSongs))
             {
-                Debug.WriteLine("'PageListSongs' selected", "INFO");
                 frameMainContent.Navigate(typeof(PageListSongs));
             }
         }

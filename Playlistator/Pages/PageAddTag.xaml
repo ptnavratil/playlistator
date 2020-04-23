@@ -8,10 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Spacing="5">
-        <TextBlock Text="New tag" Width="200"></TextBlock>
-        <TextBox x:Name="textBoxTagName" PlaceholderText="tag name" TextWrapping="NoWrap" Width="200"/>
-        <TextBox x:Name="textBoxTagDescription" PlaceholderText="tag description (optional)" TextWrapping="Wrap" Width="200" Height="80"/>
+    <StackPanel Spacing="5" Width="400">
+        <TextBlock FontSize="16" Text="New tag"></TextBlock>
+        <TextBox x:Name="textBoxTagName" PlaceholderText="tag name" TextWrapping="NoWrap" />
+        <TextBox x:Name="textBoxTagDescription" PlaceholderText="tag description (optional)" TextWrapping="Wrap" Height="80"/>
         <Button x:Name="buttonAddTag" HorizontalAlignment="Center" Content="Add tag" Width="200" Click="buttonAddTag_Click"/>
     </StackPanel>
     

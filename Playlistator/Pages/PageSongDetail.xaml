@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Width="400">
+    <StackPanel Width="400" Spacing="5">
         <TextBlock FontSize="16" HorizontalAlignment="Center" Text="Song detail"></TextBlock>
         <StackPanel Orientation="Horizontal">
             <TextBlock   Text="Song: " Width="60"></TextBlock>
@@ -51,6 +51,22 @@
             </ComboBox>
             <Button x:Name="buttonRemoveTag" Content="Remove" Width="70" Click="buttonRemoveTag_Click"/>
         </StackPanel>
+
+        <Button Content="Edit song" Width="130">
+            
+        </Button>
+        
+        <Button x:Name="button" Content="Delete song" Width="130">
+            <Button.Flyout>
+                <Flyout x:Name="flyoutConfirmSongDelete">
+                    <StackPanel>
+                        <TextBlock Text="Song will be deleted. Do you want to continue?" Margin="0,0,0,12" />
+                        <Button x:Name="buttonFlyoutDeleteSongConfirm" Click="buttonFlyoutDeleteSongConfirm_Click" Content="Delete song" />
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+
+        </Button>
 
     </StackPanel>
 </Page>

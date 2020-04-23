@@ -1,4 +1,5 @@
 ﻿
+-- Tady je prehled struktury tabulek 
 
 -- tags table definition
 CREATE TABLE IF NOT EXISTS `tags` (

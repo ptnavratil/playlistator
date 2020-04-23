@@ -8,13 +8,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Spacing="5">
-        <TextBlock FontSize="16" Text="New song" Width="200"></TextBlock>
-        <TextBox x:Name="textBoxSongName" PlaceholderText="song name" TextWrapping="NoWrap" Width="200"/>
-        <TextBox x:Name="textBoxAuthorName" PlaceholderText="author name" TextWrapping="NoWrap" Width="200"/>
+    <StackPanel Spacing="5" Width="400">
+        <TextBlock FontSize="16" Text="New song" ></TextBlock>
+        <TextBox x:Name="textBoxSongName" PlaceholderText="song name" TextWrapping="NoWrap" />
+        <TextBox x:Name="textBoxAuthorName" PlaceholderText="author name" TextWrapping="NoWrap" />
         <Button x:Name="buttonSelectFilesystemPath" HorizontalAlignment="Center" Content="Select song file..." Width="200" Click="buttonSelectFilesystemPath_Click"/>
-        <TextBox x:Name="textBoxFilesystemPath" PlaceholderText="filesystem path" IsReadOnly="True" TextWrapping="NoWrap" Width="200"/>
-
+        <TextBox x:Name="textBoxFilesystemPath" PlaceholderText="filesystem path" IsReadOnly="True" TextWrapping="NoWrap" />
         <Button x:Name="buttonAddSong" HorizontalAlignment="Center" Content="Add song" Width="200" Click="buttonAddSong_Click"/>
     </StackPanel>
 </Page>

@@ -66,10 +66,6 @@ namespace Playlistator.Pages
                         listOfTagsToAdd.Add(oneTag);
                     }
                 }
-                /*
-                FileInfo Exists() returns false when file exists
-                UWP access to the path is denied
-                 */
 
                 comboBoxTagsToAdd.ItemsSource = listOfTagsToAdd;
                 comboBoxTagsToRemove.ItemsSource = listOfTagsToRemove;
@@ -79,6 +75,10 @@ namespace Playlistator.Pages
         private async void buttonCheckFilePath_Click(object sender, RoutedEventArgs e)
         {
             //FIXME nefunkcni - problem s opravnenimi v FileInfo.Exists()
+            /*
+            FileInfo Exists() returns false when file exists
+            UWP access to the path is denied
+             */
             Debug.WriteLine($"actualSong.FSPath={actualSong.FilesystemPath}", "DEBUG");
             FileInfo songFile = new FileInfo(actualSong.FilesystemPath);
             bool songFileExists = songFile.Exists;
@@ -119,6 +119,17 @@ namespace Playlistator.Pages
                     comboBoxTagsToRemove.SelectedItem = null;
                     listOfTagsToAdd.Add(selectedTag);
                 }
+            }
+        }
+
+        private async void buttonFlyoutDeleteSongConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Delete song confirm flyout button clicked.");
+            bool songDeleted = DataAccess.DeleteSong(actualSong);
+            if (songDeleted) {
+                flyoutConfirmSongDelete.Hide();
+                Frame.Navigate(typeof(PageListSongs));
+                await new MessageDialog("Song deleted.", "Song creation").ShowAsync();
             }
         }
     }

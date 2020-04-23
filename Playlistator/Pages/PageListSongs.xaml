@@ -20,14 +20,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Ellipse x:Name="Ellipse"
-                    Grid.RowSpan="2"
-                    Width ="32"
-                    Height="32"
-                    Margin="6"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Fill="{ThemeResource SystemControlBackgroundBaseMediumBrush}"/>
                 <TextBlock Grid.Column="1"
                     Text="{x:Bind SongName}"
                     x:Phase="1"
@@ -43,9 +35,20 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Width="400"  Orientation="Vertical">
-        <TextBlock FontSize="16" Text="List of songs" HorizontalAlignment="Center"></TextBlock>
-        <Button x:Name="buttonGoToSelectedSongDetail" HorizontalAlignment="Center" Content="Go to selected song detail" Click="buttonGoToSelectedSongDetail_Click" />
-        <ListView x:Name="listViewSongs" SelectionMode="Single" ItemTemplate="{StaticResource SongsListViewTemplate}"/>
-    </StackPanel>
+    <Grid Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" FontSize="16" Text="List of songs" HorizontalAlignment="Center"></TextBlock>
+        <Button Grid.Row="1" x:Name="buttonGoToSelectedSongDetail" HorizontalAlignment="Center" Content="Go to selected song detail" Click="buttonGoToSelectedSongDetail_Click" />
+        <ListView Grid.Row="2" x:Name="listViewSongs" SelectionMode="Single" ItemTemplate="{StaticResource SongsListViewTemplate}"/>
+
+    </Grid>
+
+
+
+  
 </Page>

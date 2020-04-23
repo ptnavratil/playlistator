@@ -20,12 +20,6 @@ namespace Playlistator
         private const string DatabaseFilename = "Playlistator.db";
         private static readonly string DatabasePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, DatabaseFilename);
 
-        //FIXME potreba tyto metody predelat aby neco vracely
-
-        public async static void InsertSong() { throw new NotImplementedException(); }
-        public async static void UpdateSong() { throw new NotImplementedException(); }
-        public async static void DeleteSong() { throw new NotImplementedException(); }
-
         public static IList<Tag> SelectAllTags()
         {
             IList<Tag> listOfTags = new List<Tag>();
@@ -117,6 +111,43 @@ namespace Playlistator
             return listOfSongs;
 
         }
+
+        public static bool DeleteSong(Song song) {
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand deleteSongCommand = new SqliteCommand(SqliteExpressions.DeleteSong, db);
+                deleteSongCommand.Parameters.AddWithValue("$id", song.Id);
+
+                try
+                {
+                    int numOfAffectedRows = deleteSongCommand.ExecuteNonQuery();
+                    if (numOfAffectedRows == 1)
+                    {
+                        Debug.WriteLine($"numOfAffectedRows={numOfAffectedRows}","DEBUG");
+
+                        SqliteCommand deleteAllTagConnectionsOfDeletedSong = new SqliteCommand(SqliteExpressions.DeleteSongHasTagOfSpecifiedSong, db);
+                        deleteAllTagConnectionsOfDeletedSong.Parameters.AddWithValue("$song_id", song.Id);
+                        int numOfDeletedRows = deleteAllTagConnectionsOfDeletedSong.ExecuteNonQuery();
+                        if (numOfDeletedRows != -1) {
+                            Debug.WriteLine($"numOfDeletedRows={numOfDeletedRows}", "DEBUG");
+                            Debug.WriteLine("Song deleted.", "DEBUG");
+                            return true;
+                        }
+
+                    }
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                    return false;
+                }
+                return false;
+            }
+
+        }
+
 
         public static bool InsertTag(Tag tag)
         {
