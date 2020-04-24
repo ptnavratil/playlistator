@@ -38,11 +38,13 @@
     <Grid Width="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" x:Name="textBlockListOfTagsHeader" FontSize="16" Text="List of defined tags" HorizontalAlignment="Center" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
-        <ListView Grid.Row="1" x:Name="listViewTags" Width="400" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}"  RelativePanel.Below="textBlockListOfTagsHeader" RelativePanel.AlignBottomWithPanel="True" />
+        <Button Grid.Row="1" x:Name="buttonGoToSelectedTagDetail" HorizontalAlignment="Center" Content="Go to selected tag detail" Click="buttonGoToSelectedTagDetail_Click" />
+        <ListView Grid.Row="2" x:Name="listViewTags" Width="400" SelectionMode="Single" ItemTemplate="{StaticResource TagsListViewTemplate}"  RelativePanel.Below="textBlockListOfTagsHeader" RelativePanel.AlignBottomWithPanel="True" />
 
 
     </Grid>

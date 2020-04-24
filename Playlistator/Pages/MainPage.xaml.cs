@@ -56,6 +56,8 @@ namespace Playlistator.Pages
             }
             else if (selectedItem.Equals(navigationViewItemPlayer))
             {
+                //TEMP - test
+                frameMainContent.Navigate(typeof(TempPage1));
             }
             else if (selectedItem.Equals(navigationViewItemAddTag))
             {

@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Playlistator.Model;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Playlistator.Pages
@@ -29,7 +30,14 @@ namespace Playlistator.Pages
             listViewTags.ItemsSource = DataAccess.SelectAllTags();
         }
 
-        //TODO vyresit aby byl ScrollBar u seznamu Tagu
-
+        private void buttonGoToSelectedTagDetail_Click(object sender, RoutedEventArgs e)
+        {
+            object selectedItem = listViewTags.SelectedItem;
+            if (selectedItem != null && selectedItem is Tag)
+            {
+                Tag selectedTag = selectedItem as Tag;
+                this.Frame.Navigate(typeof(PageTagDetail), selectedTag);
+            }
+        }
     }
 }

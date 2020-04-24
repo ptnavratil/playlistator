@@ -130,6 +130,9 @@
     <Compile Include="Pages\PageSongDetail.xaml.cs">
       <DependentUpon>PageSongDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageTagDetail.xaml.cs">
+      <DependentUpon>PageTagDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TempListItemDesign.xaml.cs">
       <DependentUpon>TempListItemDesign.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageSongDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageTagDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

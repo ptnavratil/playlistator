@@ -148,6 +148,42 @@ namespace Playlistator
 
         }
 
+        public static bool DeleteTag(Tag tag) {
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand deleteTagCommand = new SqliteCommand(SqliteExpressions.DeleteTag, db);
+                deleteTagCommand.Parameters.AddWithValue("$id", tag.Id);
+
+                try
+                {
+                    int numOfAffectedRows = deleteTagCommand.ExecuteNonQuery();
+                    if (numOfAffectedRows == 1)
+                    {
+                        Debug.WriteLine($"numOfAffectedRows={numOfAffectedRows}", "DEBUG");
+
+                        SqliteCommand deleteAllSongConnectionsOfDeletedTag = new SqliteCommand(SqliteExpressions.DeleteSongHasTagOfSpecifiedTag, db);
+                        deleteAllSongConnectionsOfDeletedTag.Parameters.AddWithValue("$tag_id", tag.Id);
+                        int numOfDeletedRows = deleteAllSongConnectionsOfDeletedTag.ExecuteNonQuery();
+                        if (numOfDeletedRows != -1)
+                        {
+                            Debug.WriteLine($"numOfDeletedRows={numOfDeletedRows}", "DEBUG");
+                            Debug.WriteLine("Tag deleted.", "DEBUG");
+                            return true;
+                        }
+
+                    }
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                    return false;
+                }
+                return false;
+            }
+        }
+
 
         public static bool InsertTag(Tag tag)
         {
@@ -259,12 +295,6 @@ namespace Playlistator
                 return false;
             }
         }
-
-
-
-
-        public async static void UpdateTag() { throw new NotImplementedException(); }
-        public async static void DeleteTag() { throw new NotImplementedException(); }
 
         public async static void InitializeDatabase()
         {

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,12 +22,12 @@ namespace Playlistator.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Page1 : Page
+    public sealed partial class TempPage1 : Page
     {
         private Windows.Storage.StorageFile selectedSongFile;
         private MediaElement player;
 
-        public Page1()
+        public TempPage1()
         {
             this.InitializeComponent();
             player = new MediaElement();
@@ -50,7 +51,7 @@ namespace Playlistator.Pages
             if (selectedSongFile != null)
             {
                 // Application now has read/write access to the picked file
-                textBoxSelectedSong.Text = selectedSongFile.Name;
+                textBoxSelectedSong.Text = selectedSongFile.Path;
                 var stream = await selectedSongFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 player.SetSource(stream, "");
                 // Nefunguje pisnicka se zacne prehravat i kdyz se zavola player.Stop();
@@ -84,6 +85,20 @@ namespace Playlistator.Pages
             {
                 player.Stop();
             }
+        }
+
+        private async void buttonCheckFilePathIsValid_Click(object sender, RoutedEventArgs e)
+        {
+                FileInfo songFile = new FileInfo(textBoxSelectedSong.Text);
+                bool songFileExists = songFile.Exists;
+                if (songFileExists)
+                {
+                    await new MessageDialog("Path to song file is valid.", "Song file path check").ShowAsync();
+                }
+                else
+                {
+                    await new MessageDialog("Path to song file is invalid.", "Song file path check").ShowAsync();
+                }
         }
     }
 }

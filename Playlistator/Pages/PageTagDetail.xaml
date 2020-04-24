@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Playlistator.Pages.PageTagDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Playlistator.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <StackPanel Width="400" Spacing="5">
+        <TextBlock FontSize="16" HorizontalAlignment="Center" Text="Tag detail"></TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock   Text="Name: " Width="Auto"></TextBlock>
+            <TextBlock  x:Name="textBlockTagName" Text="Some tag name"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock  Text="Description:" Width="Auto"></TextBlock>
+            <TextBlock  x:Name="textBlockTagDescription" Text="This is some tag description."></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock  Text="Created:" Width="Auto"></TextBlock>
+            <TextBlock  x:Name="textBlockTagCreated" Text="12.11.2015, 15:36:29"></TextBlock>
+        </StackPanel>
+
+        <Button x:Name="button" Content="Delete tag" Width="130">
+            <Button.Flyout>
+                <Flyout x:Name="flyoutConfirmTagDelete">
+                    <StackPanel>
+                        <TextBlock Text="Tag will be deleted. Do you want to continue?" Margin="0,0,0,12" />
+                        <Button x:Name="buttonFlyoutDeleteTagConfirm" Click="buttonFlyoutDeleteTagConfirm_Click" Content="Delete tag" />
+                    </StackPanel>
+                </Flyout>
+            </Button.Flyout>
+
+        </Button>
+
+    </StackPanel>
+</Page>

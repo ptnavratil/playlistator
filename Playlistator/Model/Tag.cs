@@ -12,14 +12,14 @@ namespace Playlistator.Model
         #endregion //Attributes
 
         #region Constructors
-        public Tag() { }
+        public Tag() {}
 
         public Tag(long id, string name, string description, long created)
         {
             Id = id;
             Name = name;
             Description = description;
-            Created = new DateTime(created);
+            Created = Utils.UnixTimeToDateTime(created);
         }
         #endregion //Constructors
 
