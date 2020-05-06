@@ -112,6 +112,43 @@ namespace Playlistator
 
         }
 
+        public static IList<Song> SelectAllSongsWithSpecifiedTag(Tag tag)
+        {
+            IList<Song> listOfSongs = new List<Song>();
+            using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
+            {
+                db.Open();
+
+                SqliteCommand selectAllSongsWithSpecifiedTagCommand = new SqliteCommand(SqliteExpressions.SelectAllSongsWithSpecifiedTag, db);
+                selectAllSongsWithSpecifiedTagCommand.Parameters.AddWithValue("$tag_id", tag.Id);
+
+                try
+                {
+                    SqliteDataReader reader = selectAllSongsWithSpecifiedTagCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        long songId = (long)reader["song_id"];
+                        string songName = (string)reader["song_name"];
+                        string authorName = (string)reader["song_author_name"];
+                        string filesystemPath = (string)reader["song_filesystem_path"];
+                        long songCreated = (long)reader["song_created"];
+
+                        listOfSongs.Add(new Song(songId, songName, authorName, filesystemPath, songCreated));
+                    }
+                    reader.Close();
+                }
+                catch (SqliteException e)
+                {
+                    Debug.WriteLine($"{e.SqliteErrorCode}:{e.Message}", "ERROR");
+                }
+            }
+            return listOfSongs;
+
+        }
+
+
+
+
         public static bool DeleteSong(Song song) {
             using (SqliteConnection db = new SqliteConnection($"Filename={DatabasePath}"))
             {

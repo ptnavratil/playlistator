@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="Playlistator.Pages.PagePlayer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Playlistator.Pages"
+    xmlns:model="using:Playlistator.Model"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="SongsListViewTemplate" x:DataType="model:Song">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1"
+                    Text="{x:Bind SongName}"
+                    x:Phase="1"
+                    Style="{ThemeResource BaseTextBlockStyle}"
+                    Margin="12,6,0,0"/>
+                <TextBlock  Grid.Column="1"
+                    Grid.Row="1"
+                    Text="{x:Bind AuthorName}"
+                    x:Phase="2"
+                    Style="{ThemeResource BodyTextBlockStyle}"
+                    Margin="12,0,0,6"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+
+    <Grid Width="400">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="16" Grid.Row="0" Text="Player" HorizontalAlignment="Stretch"></TextBlock>
+
+        <StackPanel Spacing="5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="buttonPrevious" Content="&#xE892;" FontFamily="Segoe MDL2 Assets" Click="buttonPrevious_Click" ToolTipService.ToolTip="Previous song in playlist"></Button>
+            <Button x:Name="buttonPlay" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Click="buttonPlay_Click" ToolTipService.ToolTip="Play current song"></Button>
+            <Button x:Name="buttonPause" Content="&#xE769;" FontFamily="Segoe MDL2 Assets" Click="buttonPause_Click" ToolTipService.ToolTip="Pause current song"></Button>
+            <Button x:Name="buttonStop" Content="&#xE71A;" FontFamily="Segoe MDL2 Assets" Click="buttonStop_Click" ToolTipService.ToolTip="Stop current song"></Button>
+            <Button x:Name="buttonNext" Content="&#xE893;" FontFamily="Segoe MDL2 Assets" Click="buttonNext_Click" ToolTipService.ToolTip="Nex song in playlist"></Button>
+
+        </StackPanel>
+        <TextBlock Grid.Row="2" Text="Playlist"></TextBlock>
+        <StackPanel Spacing="5" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Add to playlist songs with tag:" VerticalAlignment="Center"></TextBlock>
+            <ComboBox x:Name="comboBoxTagToAdd" PlaceholderText="(select tag)">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button x:Name="buttonAddSongsWithTag" Content="Add" Click="buttonAddSongsWithTag_Click"></Button>
+        </StackPanel>
+
+        <StackPanel Spacing="5" Grid.Row="4" Orientation="Horizontal">
+            <Button x:Name="buttonShufflePlaylist" Content="&#xE8B1;" FontFamily="Segoe MDL2 Assets" Click="buttonShufflePlaylist_Click" ToolTipService.ToolTip="Shuffle playlist"></Button>
+            <Button x:Name="buttonClearPlaylist" Content="&#xE894;" FontFamily="Segoe MDL2 Assets" Click="buttonClearPlaylist_Click" ToolTipService.ToolTip="Clear playlist"></Button>
+            
+        </StackPanel>
+        <ListView x:Name="listViewPlaylist" Grid.Row="5" SelectionMode="Single" ItemTemplate="{StaticResource SongsListViewTemplate}"/>
+
+
+    </Grid>
+</Page>

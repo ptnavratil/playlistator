@@ -20,7 +20,9 @@
         #region Songs
         public const string InsertSong = "INSERT INTO `songs` (song_name, author_name, filesystem_path, created) VALUES ($song_name, $author_name, $filesystem_path, strftime('%s','now'))";
         public const string DeleteSong = "DELETE FROM `songs` WHERE `id`=$id";
-        public const string SelectAllSongs = "select id, song_name, author_name, filesystem_path, created FROM `songs` ORDER BY song_name ASC";
+        public const string SelectAllSongs = "SELECT id, song_name, author_name, filesystem_path, created FROM `songs` ORDER BY song_name ASC";
+
+        public const string SelectAllSongsWithSpecifiedTag = "SELECT songs.id AS 'song_id', songs.song_name AS 'song_name', songs.author_name AS 'song_author_name', songs.filesystem_path AS 'song_filesystem_path', songs.created AS 'song_created' FROM songs JOIN songs_has_tags ON songs.id = songs_has_tags.song_id JOIN tags ON songs_has_tags.tag_id = tags.id WHERE tags.id=$tag_id";
         #endregion
 
         #region SongHasTag
