@@ -19,6 +19,7 @@
             <NavigationViewItem Name="navigationViewItemListSongs" Content="List"></NavigationViewItem>
             <NavigationViewItemSeparator></NavigationViewItemSeparator>
             <NavigationViewItem Name="navigationViewItemAboutApplication" Content="About app"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemTemp" Content="TempPlayer"></NavigationViewItem>
         </NavigationView.MenuItems>
         <Frame x:Name="frameMainContent"/>
     </NavigationView>

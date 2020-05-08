@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +32,7 @@ namespace Playlistator.Pages
         {
             this.InitializeComponent();
             player = new MediaElement();
+            //player.AutoPlay = false;
             
         }
 
@@ -52,10 +54,10 @@ namespace Playlistator.Pages
             {
                 // Application now has read/write access to the picked file
                 textBoxSelectedSong.Text = selectedSongFile.Path;
+                //String path = "C:\\Users\\Venaca\\Music\\Písničky všechny\\Tancování\\10 letkiss---Letkiss.mp3";
+               // Windows.Storage.StorageFile selectedSongFile = StorageFile.GetFileFromPathAsync(path).GetResults();
                 var stream = await selectedSongFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 player.SetSource(stream, "");
-                // Nefunguje pisnicka se zacne prehravat i kdyz se zavola player.Stop();
-                player.Stop();
             }
             else
             {
@@ -63,8 +65,13 @@ namespace Playlistator.Pages
             }
         }
 
-        private void buttonPlay_Click(object sender, RoutedEventArgs e)
+        private async void buttonPlay_Click(object sender, RoutedEventArgs e)
         {
+            String path = "C:\\Users\\Venaca\\Music\\Písničky všechny\\Tancování\\10 letkiss---Letkiss.mp3";
+            selectedSongFile = await StorageFile.GetFileFromPathAsync(path);
+            var stream2 = await selectedSongFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            player.SetSource(stream2, "");
+
             if (selectedSongFile != null) {
                 player.Play();
             }
