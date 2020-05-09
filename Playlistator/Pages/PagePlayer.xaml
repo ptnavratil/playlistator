@@ -44,12 +44,14 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock FontSize="16" Grid.Row="0" Text="Player" HorizontalAlignment="Stretch"></TextBlock>
+        <TextBlock x:Name="textBlockSongName" FontSize="20" Grid.Row="0" Text="" HorizontalAlignment="Stretch"></TextBlock>
+        <TextBlock x:Name="textBlockSongAuthor" FontSize="12" Grid.Row="1" Text="" HorizontalAlignment="Stretch"></TextBlock>
 
-        <StackPanel Spacing="5" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Spacing="5" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="buttonPrevious" Content="&#xE892;" FontFamily="Segoe MDL2 Assets" Click="buttonPrevious_Click" ToolTipService.ToolTip="Previous song in playlist"></Button>
             <Button x:Name="buttonPlay" Content="&#xE768;" FontFamily="Segoe MDL2 Assets" Click="buttonPlay_Click" ToolTipService.ToolTip="Play current song"></Button>
             <Button x:Name="buttonPause" Content="&#xE769;" FontFamily="Segoe MDL2 Assets" Click="buttonPause_Click" ToolTipService.ToolTip="Pause current song"></Button>
@@ -57,8 +59,8 @@
             <Button x:Name="buttonNext" Content="&#xE893;" FontFamily="Segoe MDL2 Assets" Click="buttonNext_Click" ToolTipService.ToolTip="Nex song in playlist"></Button>
 
         </StackPanel>
-        <TextBlock Grid.Row="2" Text="Playlist"></TextBlock>
-        <StackPanel Spacing="5" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Grid.Row="3" Text="Playlist"></TextBlock>
+        <StackPanel Spacing="5" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Add to playlist songs with tag:" VerticalAlignment="Center"></TextBlock>
             <ComboBox x:Name="comboBoxTagToAdd" PlaceholderText="(select tag)">
                 <ComboBox.ItemTemplate>
@@ -72,13 +74,13 @@
             <Button x:Name="buttonAddSongsWithTag" Content="Add" Click="buttonAddSongsWithTag_Click"></Button>
         </StackPanel>
 
-        <StackPanel Spacing="5" Grid.Row="4" Orientation="Horizontal">
+        <StackPanel Spacing="5" Grid.Row="5" Orientation="Horizontal">
             <Button x:Name="buttonShufflePlaylist" Content="&#xE8B1;" FontFamily="Segoe MDL2 Assets" Click="buttonShufflePlaylist_Click" ToolTipService.ToolTip="Shuffle playlist"></Button>
             <Button x:Name="buttonClearPlaylist" Content="&#xE894;" FontFamily="Segoe MDL2 Assets" Click="buttonClearPlaylist_Click" ToolTipService.ToolTip="Clear playlist"></Button>
             
         </StackPanel>
-        <ListView x:Name="listViewPlaylist" Grid.Row="5" SelectionMode="Single" ItemTemplate="{StaticResource SongsListViewTemplate}"/>
-
+        <ListView x:Name="listViewPlaylist" Grid.Row="6" SelectionMode="Single" ItemTemplate="{StaticResource SongsListViewTemplate}"/>
+        <MediaElement Source="media\numbers.wmv" Name="player" Width="0" Height="0" Stretch="Fill" MediaEnded="buttonNext_Click"/>
 
     </Grid>
 </Page>

@@ -59,10 +59,6 @@ namespace Playlistator.Pages
             {
                 frameMainContent.Navigate(typeof(PageListSongs));
             }
-            else if (selectedItem.Equals(navigationViewItemTemp))
-            {
-                frameMainContent.Navigate(typeof(TempPage1));
-            }
         }
     }
 }
