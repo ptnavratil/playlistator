@@ -63,13 +63,14 @@ namespace Playlistator.Pages
             }
         }
 
+        /*
         private async void buttonCheckFilePath_Click(object sender, RoutedEventArgs e)
         {
             //FIXME nefunkcni - problem s opravnenimi v FileInfo.Exists()
-            /*
-            FileInfo Exists() returns false when file exists
-            UWP access to the path is denied
-             */
+            //          
+            //  FileInfo Exists() returns false when file exists
+            //  UWP access to the path is denied
+             
             Debug.WriteLine($"actualSong.FSPath={actualSong.FilesystemPath}", "DEBUG");
             FileInfo songFile = new FileInfo(actualSong.FilesystemPath);
             bool songFileExists = songFile.Exists;
@@ -82,6 +83,7 @@ namespace Playlistator.Pages
                 await new MessageDialog("Path to song file is invalid.", "Song file path check").ShowAsync();
             }
         }
+        */
 
         private void buttonAddTag_Click(object sender, RoutedEventArgs e)
         {

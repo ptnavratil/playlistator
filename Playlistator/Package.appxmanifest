@@ -8,7 +8,7 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="0cb01b79-37ee-4f84-bd7f-64b4dfb04484"
+    Name="Upce.Fei.Playlistator"
     Publisher="CN=PNa"
     Version="1.0.0.0" />
 

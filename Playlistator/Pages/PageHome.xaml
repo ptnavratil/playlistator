@@ -8,15 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical">
+    <StackPanel Spacing="5" Width="400" Orientation="Vertical">
         <TextBlock FontSize="20" HorizontalAlignment="Center" Text="Playlistator"></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Playlistator is application for managing your huge playlist of songs." Padding="10,0,0,0"></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Create tags, add songs, and tag a song with tag." Padding="10,0,0,0"></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Then just filter song by tag and enjoy your music." Padding="10,0,0,0"></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
-        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Authors: Petr návrátil, Václav Branda" Padding="10,0,0,0"></TextBlock>
+        <TextBlock TextWrapping="Wrap" FontSize="14" HorizontalAlignment="Left" Text="Playlistator is application for managing your huge playlist of songs." Padding="0,0,0,0" Width="400"></TextBlock>
+        <TextBlock TextWrapping="Wrap" FontSize="14" HorizontalAlignment="Left" Text="Create tags, add songs, and tag a song with tag. Then just filter song by tag and enjoy your music." Width="400" Padding="0,0,0,0"></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Authors: Petr Navrátil, Václav Branda" Padding="0,0,0,0"></TextBlock>
     </StackPanel>
     
 </Page>

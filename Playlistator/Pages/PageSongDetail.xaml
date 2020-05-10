@@ -20,10 +20,8 @@
         </StackPanel>
         <StackPanel  Orientation="Horizontal">
             <TextBlock  Text="File Path: " Width="60"/>
-            <TextBlock x:Name="textBlockFilesystemPath"  Text="D:\PNa\Hudba\Linkin Park\Linkin Park - Bleed It Out.mp3"></TextBlock>
+            <TextBlock x:Name="textBlockFilesystemPath" VerticalAlignment="Center" Text="D:\PNa\Hudba\Linkin Park\Linkin Park - Bleed It Out.mp3" FontSize="12"></TextBlock>
         </StackPanel>
-        <Button x:Name="buttonCheckFilePath" Content="Check file path" Width="130" Click="buttonCheckFilePath_Click"/>
-
         <TextBlock HorizontalAlignment="Left" Text="Add tag"/>
         <StackPanel Spacing="5" Orientation="Horizontal">
             <ComboBox x:Name="comboBoxTagsToAdd" PlaceholderText="(select tag)" Width="130">
@@ -51,11 +49,6 @@
             </ComboBox>
             <Button x:Name="buttonRemoveTag" Content="Remove" Width="70" Click="buttonRemoveTag_Click"/>
         </StackPanel>
-
-        <Button Content="Edit song" Width="130">
-            
-        </Button>
-        
         <Button x:Name="button" Content="Delete song" Width="130">
             <Button.Flyout>
                 <Flyout x:Name="flyoutConfirmSongDelete">

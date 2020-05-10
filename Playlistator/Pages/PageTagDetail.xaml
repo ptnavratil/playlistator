@@ -11,19 +11,18 @@
 
     <StackPanel Width="400" Spacing="5">
         <TextBlock FontSize="16" HorizontalAlignment="Center" Text="Tag detail"></TextBlock>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Spacing="5" Orientation="Horizontal">
             <TextBlock   Text="Name: " Width="Auto"></TextBlock>
             <TextBlock  x:Name="textBlockTagName" Text="Some tag name"></TextBlock>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Spacing="5" Orientation="Horizontal">
             <TextBlock  Text="Description:" Width="Auto"></TextBlock>
             <TextBlock  x:Name="textBlockTagDescription" Text="This is some tag description."></TextBlock>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Spacing="5" Orientation="Horizontal">
             <TextBlock  Text="Created:" Width="Auto"></TextBlock>
             <TextBlock  x:Name="textBlockTagCreated" Text="12.11.2015, 15:36:29"></TextBlock>
         </StackPanel>
-
         <Button x:Name="button" Content="Delete tag" Width="130">
             <Button.Flyout>
                 <Flyout x:Name="flyoutConfirmTagDelete">
