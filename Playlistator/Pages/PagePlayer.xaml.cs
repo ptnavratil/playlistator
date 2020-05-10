@@ -8,6 +8,7 @@ using System;
 using Windows.Storage;
 using System.Diagnostics;
 using Windows.UI.Xaml.Documents;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,10 +31,21 @@ namespace Playlistator.Pages
 
 
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             IList<Tag> listOfAllTags = DataAccess.SelectAllTags();
             comboBoxTagToAdd.ItemsSource = listOfAllTags;
+
+            try
+            {
+                StorageFolder folder2 = await StorageFolder.GetFolderFromPathAsync(@"C:\");
+            }
+            catch
+            {
+                MessageDialog missingPrivillegegDialog = new MessageDialog("Application has not requested privilleges and will be exited.");
+                await missingPrivillegegDialog.ShowAsync();
+                Application.Current.Exit();
+            }
         }
 
         private void buttonAddSongsWithTag_Click(object sender, RoutedEventArgs e)

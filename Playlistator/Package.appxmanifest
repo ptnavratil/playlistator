@@ -10,7 +10,7 @@
   <Identity
     Name="Upce.Fei.Playlistator"
     Publisher="CN=PNa"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="0cb01b79-37ee-4f84-bd7f-64b4dfb04484" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
