@@ -75,7 +75,7 @@
         </StackPanel>
 
         <StackPanel Spacing="5" Grid.Row="5" Orientation="Horizontal">
-            <Button x:Name="buttonShufflePlaylist" Content="&#xE8B1;" FontFamily="Segoe MDL2 Assets" Click="buttonShufflePlaylist_Click" ToolTipService.ToolTip="Shuffle playlist"></Button>
+            <Button x:Name="buttonShufflePlaylist" Content="&#xE895;" FontFamily="Segoe MDL2 Assets" Click="buttonShufflePlaylist_Click" ToolTipService.ToolTip="Shuffle playlist"></Button>
             <Button x:Name="buttonClearPlaylist" Content="&#xE894;" FontFamily="Segoe MDL2 Assets" Click="buttonClearPlaylist_Click" ToolTipService.ToolTip="Clear playlist"></Button>
             
         </StackPanel>

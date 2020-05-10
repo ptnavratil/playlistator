@@ -12,13 +12,33 @@
             <NavigationViewItem Name="navigationViewItemHome" Content="Home" Icon="Home" ></NavigationViewItem>
             <NavigationViewItem Name="navigationViewItemPlayer" Content="Player" Icon="Play" ></NavigationViewItem>
             <NavigationViewItemHeader Content="Tags"></NavigationViewItemHeader>
-            <NavigationViewItem Name="navigationViewItemAddTag" Content="Add"></NavigationViewItem>
-            <NavigationViewItem Name="navigationViewItemListTags" Content="List"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemAddTag" Content="Add">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/tag add.png"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemListTags" Content="List">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/tag list.png"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
             <NavigationViewItemHeader Content="Songs"></NavigationViewItemHeader>
-            <NavigationViewItem Name="navigationViewItemAddSong" Content="Add"></NavigationViewItem>
-            <NavigationViewItem Name="navigationViewItemListSongs" Content="List"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemAddSong" Content="Add">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/playlistAdd.png"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemListSongs" Content="List">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/playlist.png"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
             <NavigationViewItemSeparator></NavigationViewItemSeparator>
-            <NavigationViewItem Name="navigationViewItemAboutApplication" Content="About app"></NavigationViewItem>
+            <NavigationViewItem Name="navigationViewItemAboutApplication" Content="About app">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/circle.png"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
         </NavigationView.MenuItems>
         <Frame x:Name="frameMainContent"/>
     </NavigationView>

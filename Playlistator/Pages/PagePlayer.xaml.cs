@@ -61,6 +61,14 @@ namespace Playlistator.Pages
         private void buttonShufflePlaylist_Click(object sender, RoutedEventArgs e)
         {
             shuflePlaing = !shuflePlaing;
+            if (shuflePlaing)
+            {
+                buttonShufflePlaylist.Content = "\xE8B1";
+            }
+            else {
+                buttonShufflePlaylist.Content = "\xE895";
+            }
+            
         }
 
         private void buttonClearPlaylist_Click(object sender, RoutedEventArgs e)

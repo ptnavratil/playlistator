@@ -34,7 +34,7 @@ namespace Playlistator.Pages
                 return;
             }
 
-            if (selectedItem.Equals(navigationViewItemHome))
+            if (selectedItem.Equals(navigationViewItemHome) || selectedItem.Equals(navigationViewItemAboutApplication))
             {
                 frameMainContent.Navigate(typeof(PageHome));
 
