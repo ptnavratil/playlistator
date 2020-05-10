@@ -9,7 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Orientation="Vertical">
-        <TextBlock FontSize="16" HorizontalAlignment="Center" Text="Home page"></TextBlock>
+        <TextBlock FontSize="20" HorizontalAlignment="Center" Text="Playlistator"></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Playlistator is application for managing your huge playlist of songs." Padding="10,0,0,0"></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Create tags, add songs, and tag a song with tag." Padding="10,0,0,0"></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Then just filter song by tag and enjoy your music." Padding="10,0,0,0"></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Center" Text=""></TextBlock>
+        <TextBlock FontSize="14" HorizontalAlignment="Left" Text="Authors: Petr návrátil, Václav Branda" Padding="10,0,0,0"></TextBlock>
     </StackPanel>
     
 </Page>
